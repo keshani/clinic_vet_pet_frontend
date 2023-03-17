@@ -1,0 +1,22 @@
+table {
+    border-collapse: collapse;
+  }
+  
+  td, th {
+    border: 1px solid black;
+    padding: 5px;
+  }
+  div.submit-button {
+    margin-top: 5px;
+    margin-left: 10px;
+  }
+  .fa-pencil {
+    color: blue;
+    font-size: 20px;
+  }
+  
+  /* Style the "fa-trash" icon */
+  .fa-trash {
+    color: red;
+    font-size: 20px;
+  }

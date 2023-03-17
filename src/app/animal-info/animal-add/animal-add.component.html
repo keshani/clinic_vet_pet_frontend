@@ -1,0 +1,27 @@
+<div class="row">
+    <form [formGroup]="animalAddEditForm" (ngSubmit)="onSubmitForm()">
+      <div>
+        <label for="animalName">Animal Name:</label>
+        <input type="text" id="animalName" formControlName="animalName" required>
+        <div  class ="invalid-feedback" *ngIf="animalAddEditForm.controls['animalName'].invalid && animalAddEditForm.controls['animalName'].touched">
+          Animal Name is required.
+        </div>
+      </div>
+      <div>
+        <label for="animalType">Animal Type:</label>
+        <select formControlName="animalType">
+            <option value="BIRD">BIRD</option>
+            <option value="CAT">CAT</option>
+            <option value="DOG">DOG</option>
+          </select>
+        <div  class ="invalid-feedback" *ngIf="animalAddEditForm.controls['animalType'].invalid && animalAddEditForm.controls['animalType'].touched">
+          Animal Type is required.
+        </div>
+      </div>
+      <button type="submit" *ngIf="animalAddEditForm.controls['id'].value" [disabled]="animalAddEditForm.invalid">Update</button>
+      <button type="submit" *ngIf="!animalAddEditForm.controls['id'].value" [disabled]="animalAddEditForm.invalid">Add</button>
+      <button type="button" (click) = "clearForm()" >Clear</button>
+    </form>
+</div>
+
+

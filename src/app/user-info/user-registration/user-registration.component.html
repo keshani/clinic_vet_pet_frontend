@@ -1,0 +1,34 @@
+<div class="row">
+  <form [formGroup]="userRegisterForm" (ngSubmit)="onSubmitRegisterForm()">
+    <div class="registrationWrapper">
+      <h1> User Registration Form </h1>
+    </div>
+    <div class="userFullName">
+      <label for="userFullName">Full User Name:</label>
+      <input type="text" id="userFullName" formControlName="userFullName" required>
+      <div  class ="invalid-feedback" *ngIf="userRegisterForm.controls['userFullName'].invalid && userRegisterForm.controls['userFullName'].touched">
+        Full Name is required.
+      </div>
+    </div>
+    
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" formControlName="userId" required>
+      <div  class ="invalid-feedback" *ngIf="userRegisterForm.controls['userId'].invalid && userRegisterForm.controls['userId'].touched">
+        Username is required.
+      </div>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password" required>
+      <div  class ="invalid-feedback" *ngIf="userRegisterForm.controls['password'].invalid && userRegisterForm.controls['password'].touched">
+        Password is required.
+      </div>
+    </div>
+    <div class="submitButton">
+    <button type="submit" [disabled]="userRegisterForm.invalid">Submit</button>
+    </div>
+  </form>
+<div>
+
+

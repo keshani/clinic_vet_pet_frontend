@@ -1,0 +1,40 @@
+<div class="row">
+    <form [formGroup]="userInfoForm" (ngSubmit)="onSubmitForm()">
+      <div>
+        <label for="userFullName">Full User Name:</label>
+        <input type="text" id="userFullName" formControlName="userFullName" required>
+        <div  class ="invalid-feedback" *ngIf="userInfoForm.controls['userFullName'].invalid && userInfoForm.controls['userFullName'].touched">
+          Full Name is required.
+        </div>
+        <div class ="submit-button">
+         <button type="submit" [disabled]="userInfoForm.invalid">Submit</button>
+        </div>
+      </div>
+    </form>
+  <div>
+ 
+    <div>
+    <table>
+        <thead>
+          <tr>
+            <th>Animal Name</th>
+            <th>Animal Type</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let userAnimal of userAnimals">
+            <td>{{ userAnimal.animalName }}</td>
+            <td>{{ userAnimal.animalType }}</td>
+            <td>
+              <i class="fa fa-pencil" (click)="edit(userAnimal)"></i>
+              <i class="fa fa-trash" (click)="delete(userAnimal)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div > 
+        <app-animal-edit [animalDetail] = "selectedAnimal"> </app-animal-edit>
+      </div>

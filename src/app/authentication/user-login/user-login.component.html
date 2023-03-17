@@ -1,0 +1,26 @@
+<div class="row">
+      <form [formGroup]="userLoginForm" (ngSubmit)="onSubmitLoginForm()">
+        <div class="loginWrapper">
+          <h1> User Login Form </h1>
+        </div>
+        <div>
+          <label for="username">Username:</label>
+          <input type="text" id="username" formControlName="username" required>
+          <div  class ="invalid-feedback" *ngIf="userLoginForm.controls['username'].invalid && userLoginForm.controls['username'].touched">
+            Username is required.
+          </div>
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" id="password" formControlName="password" required>
+          <div  class ="invalid-feedback" *ngIf="userLoginForm.controls['password'].invalid && userLoginForm.controls['password'].touched">
+            Password is required.
+          </div>
+        </div>
+        <div class="submitButton">
+        <button type="submit"  [disabled]="userLoginForm.invalid">Login</button>
+        </div>
+      </form>
+</div>
+
+
