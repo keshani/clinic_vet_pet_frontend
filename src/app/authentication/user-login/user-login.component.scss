@@ -26,13 +26,6 @@ form {
   input[type=text], input[type=password] {
     width: 200px;
   }
-  button[type=submit] {
-    margin-top: 10px;
-  }
-  button[type=submit][disabled] {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
   div.invalid-feedback {
     color: red;
     font-size: 12px;

@@ -18,9 +18,11 @@
           Animal Type is required.
         </div>
       </div>
+      <div class = "controlButton">
       <button type="button" (click) = "updateAnimalDetail()" *ngIf="animalAddEditForm.controls['id'].value" [disabled]="animalAddEditForm.invalid">Update</button>
       <button type="button" (click) = "addAnimalDetail()" *ngIf="!animalAddEditForm.controls['id'].value" [disabled]="animalAddEditForm.invalid">Add</button>
       <button type="button" (click) = "clearForm()" >Clear</button>
+      </div>
     </form>
 </div>
 

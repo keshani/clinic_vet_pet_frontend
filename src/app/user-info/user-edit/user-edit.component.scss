@@ -1,5 +1,50 @@
+.userEditForm {
+  margin-left: 100px;
+}
+.formWrapper {
+  display: flex; 
+  align-items: center;
+  margin-left: 100px;
+}
+.tableWrapper {
+  margin-top: 20px;
+  margin-left: 100px;
+}
+.animalListWrapper {
+  margin-top: 20px;
+  margin-left: 100px;
+}
+.petDetailHeader {
+  margin-left: 10px;
+  margin-top: 20px;
+}
+.header {
+  margin-left: 10px;
+}
+form {
+  display: flex;
+  align-items: center;
+  label {
+    margin-right: 10px;
+  }
+  input[type="text"] {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-right: 10px;
+  }
+  div.invalid-feedback {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-left: 200px;
+  }
+}
+
 table {
     border-collapse: collapse;
+    width: 50%;
   }
   
   td, th {
@@ -13,6 +58,10 @@ table {
   .fa-pencil {
     color: blue;
     font-size: 20px;
+  }
+  .iconWrap {
+    padding-left: 20px;
+    text-align: center;
   }
   
   /* Style the "fa-trash" icon */
