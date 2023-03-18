@@ -1,0 +1,28 @@
+<div class="header">
+    <h2> Users Accounts List </h2>
+</div>
+<div class="tableWrapper">
+    <table>
+        <thead>
+            <tr>
+                <th>Actions</th>
+                <th>Username</th>
+                <th>User Full name</th>
+                <th>Pets Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let userInfo of userInfoList">
+                <td>
+                    <i class="fa fa-eye iconWrap " (click)="viewUser(userInfo)"></i>
+                </td>
+                <td>{{ userInfo.userId }}</td>
+                <td>{{ userInfo.userFullName }}</td>
+                <td>{{ userInfo.animalCount }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="userEditForm" *ngIf="selectedUser">
+    <app-user-info [userInfo]="selectedUser"> </app-user-info>
+</div>

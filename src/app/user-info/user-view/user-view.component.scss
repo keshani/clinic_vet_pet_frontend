@@ -1,0 +1,38 @@
+.tableWrapper {
+    margin-top: 20px;
+    margin-left: 100px;
+}
+
+.header {
+    margin-left: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 50%;
+}
+
+td,
+th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+div.submit-button {
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.fa-eye {
+    color: rgb(9, 179, 46);
+    font-size: 20px;
+}
+
+.iconWrap {
+    padding-left: 20px;
+    text-align: center;
+}
+
+.userEditForm {
+    margin-top: 20px;
+}

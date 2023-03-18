@@ -3,14 +3,12 @@ import { CommonModule } from '@angular/common';
 import { UserRegistrationComponent } from './user-registration.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
-
 @NgModule({
   declarations: [
     UserRegistrationComponent
   ],
   imports: [
-    CommonModule ,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule
   ]

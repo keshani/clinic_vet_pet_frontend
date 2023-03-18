@@ -1,51 +1,56 @@
-<div class="header">
-  <h2> User Account Information </h2>
-</div>
 
-<div class="row">
-  <form [formGroup]="userInfoForm" (ngSubmit)="onSubmitForm()">
-    <div class="formWrapper">
-      <label for="userFullName">Full User Name:</label>
-      <input type="text" id="userFullName" formControlName="userFullName" required>
-      <div class="invalid-feedback"
-        *ngIf="userInfoForm.controls['userFullName'].invalid && userInfoForm.controls['userFullName'].touched">
-        Full Name is required.
+<div class="editForm">
+
+  <div class="header">
+    <h2> User Account Information </h2>
+  </div>
+  
+  <div class="row">
+    <form [formGroup]="userInfoForm" (ngSubmit)="onSubmitForm()">
+      <div class="formWrapper">
+        <label for="userFullName">Full User Name:</label>
+        <input type="text" id="userFullName" formControlName="userFullName" required>
+        <div class="invalid-feedback"
+          *ngIf="userInfoForm.controls['userFullName'].invalid && userInfoForm.controls['userFullName'].touched">
+          Full Name is required.
+        </div>
+        <div class="submit-button">
+          <button type="submit" [disabled]="userInfoForm.invalid">Submit</button>
+        </div>
       </div>
-      <div class="submit-button">
-        <button type="submit" [disabled]="userInfoForm.invalid">Submit</button>
-      </div>
-    </div>
-  </form>
-<div>
+    </form>
+  <div>
+  
+  <div class="header">
+      <h2> Pet Details List </h2>
+  </div>
+   <div class="tableWrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Animal Name</th>
+              <th>Animal Type</th>
+              <th style="width: 100px;">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let userAnimal of userAnimals">
+              <td>{{ userAnimal.animalName }}</td>
+              <td>{{ userAnimal.animalType }}</td>
+              <td>
+                <i class="fa fa-pencil iconWrap " (click)="edit(userAnimal)"></i>
+                <i class="fa fa-trash iconWrap" (click)="delete(userAnimal)"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+  
+  <div class="petDetailHeader">
+    <h2> Pet Details</h2>
+  </div>
+  <div class="animalListWrapper">
+        <app-animal-edit [animalDetail]="selectedAnimal" (userAnimalDataChange)="onAnimalAddEvent()"> </app-animal-edit>
+  </div>
 
-<div class="header">
-    <h2> Pet Details List </h2>
-</div>
- <div class="tableWrapper">
-      <table>
-        <thead>
-          <tr>
-            <th>Animal Name</th>
-            <th>Animal Type</th>
-            <th style="width: 100px;">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let userAnimal of userAnimals">
-            <td>{{ userAnimal.animalName }}</td>
-            <td>{{ userAnimal.animalType }}</td>
-            <td>
-              <i class="fa fa-pencil iconWrap " (click)="edit(userAnimal)"></i>
-              <i class="fa fa-trash iconWrap" (click)="delete(userAnimal)"></i>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-</div>
-
-<div class="petDetailHeader">
-  <h2> Pet Details</h2>
-</div>
-<div class="animalListWrapper">
-      <app-animal-edit [animalDetail]="selectedAnimal"> </app-animal-edit>
 </div>

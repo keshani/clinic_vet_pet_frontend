@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/authentication/authentication.service';
@@ -14,16 +14,17 @@ import { AnimalInfoService } from '../animal-info.service';
 
 export class AnimalEditComponent implements OnInit, OnDestroy, OnChanges {
   @Input() animalDetail!: AnimalDetail;
+  @Output() userAnimalDataChange = new EventEmitter<any>();
   public animalAddEditForm: FormGroup;
 
   constructor(private router: Router,
-              private animalInfoService: AnimalInfoService,
-              private authService: AuthService) {
+    private animalInfoService: AnimalInfoService,
+    private authService: AuthService) {
     this.animalAddEditForm = this.createFormGroup();
   }
 
   ngOnInit(): void {
-  this.populateFormData();
+    this.populateFormData();
   }
 
   ngOnDestroy(): void {
@@ -34,67 +35,57 @@ export class AnimalEditComponent implements OnInit, OnDestroy, OnChanges {
       this.populateFormData();
     }
   }
+
   public updateAnimalDetail() {
     const animalObj = this.animalAddEditForm.getRawValue();
     this.animalInfoService.updateAnimalInfo(animalObj).subscribe({
-
       next: value => {
-       alert("Succesfully login")
-
-        this.router.navigateByUrl("/userInfoPage");
+        alert("Animal Data Updated")
+        this.userAnimalDataChange.emit();
       },
       error: error => {
-        alert ("incorect credentials")
+        alert("Error Occured while updating Animal Data")
       },
       complete: () => console.log('Complete!')
-
     });
-
   }
 
   public addAnimalDetail() {
     const animalObj: AnimalDetail = this.animalAddEditForm.getRawValue();
     animalObj.ownerId = this.authService.getLoginUserId();
     this.animalInfoService.addAnimalInfo(animalObj).subscribe({
-
       next: value => {
-       alert("Succesfully login")
-
-        this.router.navigateByUrl("/userInfoPage");
+        alert("Animal Data Added")
+        this.userAnimalDataChange.emit();
       },
       error: error => {
-        alert ("incorect credentials")
+        alert("Error Occured while adding Animal Data")
       },
       complete: () => console.log('Complete!')
-
     });
-
   }
-
-  
 
   public clearForm() {
-      this.animalAddEditForm.patchValue({
-        id: '',
-        ownerId: this.animalDetail.ownerId,
-        animalName: '',
-        animalType: '',
-      });
-      this.animalAddEditForm.updateValueAndValidity();
+    this.animalAddEditForm.patchValue({
+      id: '',
+      ownerId: this.animalDetail.ownerId,
+      animalName: '',
+      animalType: '',
+    });
+    this.animalAddEditForm.updateValueAndValidity();
   }
 
-
-  private createFormGroup() : FormGroup {
+  private createFormGroup(): FormGroup {
     const groups: any = {};
     groups['id'] = new FormControl('');
     groups['ownerId'] = new FormControl('');
-    groups['animalName'] = new FormControl('',[Validators.required]);
-    groups['animalType'] = new FormControl('',[Validators.required]);
+    groups['animalName'] = new FormControl('', [Validators.required]);
+    groups['animalType'] = new FormControl('', [Validators.required]);
     return new FormGroup(groups);
   }
 
-  private populateFormData () {
-    if(this.animalDetail) {
+  private populateFormData() {
+    if (this.animalDetail) {
       this.animalAddEditForm.patchValue({
         id: this.animalDetail.id,
         ownerId: this.animalDetail.ownerId,
@@ -103,6 +94,5 @@ export class AnimalEditComponent implements OnInit, OnDestroy, OnChanges {
       });
       this.animalAddEditForm.updateValueAndValidity();
     }
-
-}
+  }
 }

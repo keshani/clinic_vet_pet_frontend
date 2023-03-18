@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { AnimalEditComponent } from './animal-edit/animal-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
-
 @NgModule({
   declarations: [
     AnimalEditComponent],

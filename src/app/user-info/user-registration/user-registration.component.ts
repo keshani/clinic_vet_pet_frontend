@@ -28,14 +28,13 @@ export class UserRegistrationComponent {
     const userObj = this.userRegisterForm.getRawValue();
     this.userInfoService.addUserInfo(userObj).subscribe({
       next: value => {
-       
-        alert("user update")
+        alert("User Successfully Registered")
+        this.router.navigateByUrl("/userLoginForm");
       },
       error: error => {
         alert("Something went wrong. Please try again")
       },
       complete: () => console.log('Complete!')
-
     });
   }
 

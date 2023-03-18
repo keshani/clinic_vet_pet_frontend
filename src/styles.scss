@@ -17,3 +17,8 @@ button:disabled {
   color: #666;
   cursor: not-allowed;
 }
+mat-dialog-container {
+  
+  background-color: #fff !important;
+  max-width: none !important;
+}
