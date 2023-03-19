@@ -13,7 +13,7 @@ export class UserInfoService {
   constructor(private apiCalService: ApiCallService) { }
 
   getUserInfo(userId: string): Observable<any> {
-    const url = USER_INFO_FETCH + userId
+    const url = USER_INFO_FETCH.replace('{userId}', userId);
     return this.apiCalService.constructApiCall(RequestMethods.GET, url, null);
   }
 
@@ -23,7 +23,7 @@ export class UserInfoService {
   }
 
   updateUserInfo(userObj: User): Observable<any> {
-    const url = USER_INFO_UPDATE + userObj.userId
+    const url = USER_INFO_UPDATE.replace('{userId}', userObj.userId); 
     return this.apiCalService.constructApiCall(RequestMethods.PUT, url, userObj);
   }
 

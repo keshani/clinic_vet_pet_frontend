@@ -14,6 +14,7 @@ import { AnimalInfoService } from '../animal-info.service';
 
 export class AnimalEditComponent implements OnInit, OnDestroy, OnChanges {
   @Input() animalDetail!: AnimalDetail;
+  @Input() ownerId: string = "";
   @Output() userAnimalDataChange = new EventEmitter<any>();
   public animalAddEditForm: FormGroup;
 
@@ -78,7 +79,7 @@ export class AnimalEditComponent implements OnInit, OnDestroy, OnChanges {
   private createFormGroup(): FormGroup {
     const groups: any = {};
     groups['id'] = new FormControl('');
-    groups['ownerId'] = new FormControl('');
+    groups['ownerId'] = new FormControl(this.ownerId);
     groups['animalName'] = new FormControl('', [Validators.required]);
     groups['animalType'] = new FormControl('', [Validators.required]);
     return new FormGroup(groups);

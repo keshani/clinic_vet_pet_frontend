@@ -18,6 +18,7 @@ export class UserInfoComponent {
   public userInfoForm: FormGroup;
   public userAnimals: AnimalDetail[] = [];
   public selectedAnimal!: AnimalDetail;
+  public formUserId:string ="";
   public passUser!: User;
   faPencil = faPencil;
   faTrash = faTrash;
@@ -66,7 +67,8 @@ export class UserInfoComponent {
   }
 
   public edit(animal: AnimalDetail) {
-    this.selectedAnimal = animal;
+
+    this.selectedAnimal = {... animal};
     this.selectedAnimal.ownerId = this.passUser.userId;
   }
 
@@ -100,6 +102,7 @@ export class UserInfoComponent {
     } else {
       this.passUser = JSON.parse(this.route.snapshot.paramMap.get("user") || "");
     }
+    this.formUserId = this.passUser.userId;
   }
 
   private setUserAnimalList(value: any) {
