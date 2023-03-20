@@ -9,3 +9,9 @@ export enum RequestMethods {
   DELETE = 'DELETE',
   PUT = 'PUT'
 }
+
+export enum AnimalType {
+  BIRD = 'BIRD',
+  DOG = 'DOG',
+  CAT = 'CAT'
+}

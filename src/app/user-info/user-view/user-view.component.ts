@@ -24,6 +24,10 @@ export class UserViewComponent {
      this.selectedUser ={...userInfo} ;
   }
 
+ public goToAnimalStatistic() {
+   this.router.navigateByUrl("/animalStatisticPage");
+ }
+
   private getUsersList() {
     const userDto = {pageNumber:0, pageSize:10 };
     this.userInfoService.getAllUserInfo(userDto).subscribe({

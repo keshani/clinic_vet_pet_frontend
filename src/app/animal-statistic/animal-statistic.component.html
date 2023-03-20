@@ -1,0 +1,26 @@
+<div class="header">
+    <h2> Animal Statistic Data </h2>
+    <div class="userViewButton">
+        <button type="button" (click) = "goToUserView()" >Users View</button>
+      </div>
+</div>
+
+<div class="tableWrapper">
+    <table>
+        <thead>
+            <tr>
+                <th>Animal Type</th>
+                <th>Animal Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let animalStat of animalStatList">
+                <td>{{ animalStat.animalType }}</td>
+                <td class="animalCount">{{ animalStat.animalCount }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="totalAnimalCount">
+    <span>Total Animal Count: {{totalAnimalCount}}</span>
+</div>

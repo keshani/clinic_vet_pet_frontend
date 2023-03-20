@@ -9,6 +9,7 @@ import { UserRegistrationModule } from './user-info/user-registration/user-regis
 import { HttpClientModule } from '@angular/common/http';
 import { AnimalInfoModule } from './animal-info/animal-info.module'
 import { UserInfoModule } from './user-info/user-info.module';
+import { AnimalStatisticModule } from './animal-statistic/animal-statistic.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserInfoModule } from './user-info/user-info.module';
     UserRegistrationModule,
     UserLoginModule,
     AnimalInfoModule,
-    UserInfoModule
+    UserInfoModule,
+    AnimalStatisticModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

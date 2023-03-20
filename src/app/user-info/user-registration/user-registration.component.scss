@@ -1,5 +1,5 @@
 .registrationWrapper {
-  margin-left: 100px;
+  margin-left: 90px;
 }
 
 .row {
@@ -46,4 +46,8 @@ div.invalid-feedback {
   font-size: 12px;
   margin-top: 5px;
   margin-left: 200px;
+}
+.error-message {
+  margin-left: 100px;
+  color: red;
 }

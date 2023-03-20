@@ -11,7 +11,7 @@ import { UserInfoService } from '../user-info.service';
 export class UserRegistrationComponent {
  
   public userRegisterForm: FormGroup;
-
+  public errorMessage: string=""
   constructor(private router: Router, 
     private userInfoService: UserInfoService) {
     this.userRegisterForm = this.createFormGroup();
@@ -32,7 +32,8 @@ export class UserRegistrationComponent {
         this.router.navigateByUrl("/userLoginForm");
       },
       error: error => {
-        alert("Something went wrong. Please try again")
+        const errMsg = error.error.message;
+       this.errorMessage = errMsg;
       },
       complete: () => console.log('Complete!')
     });

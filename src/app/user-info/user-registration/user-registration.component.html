@@ -3,6 +3,7 @@
     <div class="registrationWrapper">
       <h1> User Registration Form </h1>
     </div>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
     <div class="userFullName">
       <label for="userFullName">Full User Name:</label>
       <input type="text" id="userFullName" formControlName="userFullName" required>

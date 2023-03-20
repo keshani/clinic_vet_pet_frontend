@@ -1,0 +1,28 @@
+.tableWrapper {
+    margin-top: 20px;
+    margin-left: 100px;
+}
+
+.header {
+    margin-left: 10px;
+    
+  align-items: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 50%;
+}
+
+td,
+th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.totalAnimalCount {
+    margin-left: 100px;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+

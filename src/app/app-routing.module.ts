@@ -4,6 +4,7 @@ import { UserLoginComponent } from './authentication/user-login/user-login.compo
 import { UserRegistrationComponent } from './user-info/user-registration/user-registration.component';
 import { UserInfoComponent } from './user-info/user-edit/user-edit.component';
 import { UserViewComponent } from './user-info/user-view/user-view.component';
+import { AnimalStatisticComponent } from './animal-statistic/animal-statistic.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'userAcoountViewPage',
     component: UserViewComponent
+  },
+  {
+    path: 'animalStatisticPage',
+    component: AnimalStatisticComponent
   }
 ];
 
