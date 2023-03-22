@@ -53,7 +53,7 @@ export class AnimalEditComponent implements OnInit, OnDestroy, OnChanges {
 
   public addAnimalDetail() {
     const animalObj: AnimalDetail = this.animalAddEditForm.getRawValue();
-    animalObj.ownerId = this.authService.getLoginUserId();
+    animalObj.ownerId = this.ownerId;
     this.animalInfoService.addAnimalInfo(animalObj).subscribe({
       next: value => {
         alert("Animal Data Added")
