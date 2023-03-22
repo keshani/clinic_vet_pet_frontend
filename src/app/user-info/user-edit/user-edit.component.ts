@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Inject, Input, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserInfoService } from '../user-info.service';
@@ -13,7 +13,7 @@ import { User } from 'src/app/common/models/user-info';
   templateUrl: './user-edit.component.html',
   styleUrls: ['./user-edit.component.scss']
 })
-export class UserInfoComponent {
+export class UserInfoComponent implements OnInit, OnDestroy, OnChanges  {
   @Input() userInfo: any;
   public userInfoForm: FormGroup;
   public userAnimals: AnimalDetail[] = [];
@@ -32,14 +32,17 @@ export class UserInfoComponent {
   }
 
   ngOnInit(): void {
-    this.setPassDataThroughNavigation();
-    this.populateFormData();
-    this.getUserAnimalList();
+    this.setUpComponetInitialValues();
   }
 
   ngOnDestroy(): void {
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['userInfo']) {
+      this.setUpComponetInitialValues();
+    }
+  }
   public onSubmitForm() {
     const userObj = this.userInfoForm.getRawValue();
     this.userInfoService.updateUserInfo(userObj).subscribe({
@@ -76,6 +79,11 @@ export class UserInfoComponent {
     this.getUserAnimalList();
   }
 
+  private setUpComponetInitialValues() {
+    this.setPassDataThroughNavigation();
+    this.populateFormData();
+    this.getUserAnimalList();
+  }
   private createFormGroup(): FormGroup {
     const groups: any = {};
     groups['userFullName'] = new FormControl("", [Validators.required]);

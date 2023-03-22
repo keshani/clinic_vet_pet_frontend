@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/common/models/user-info';
 import { UserInfoService } from '../user-info.service';
@@ -14,14 +14,17 @@ export class UserViewComponent {
   public selectedUser!: User;
   faEye = faEye;
   constructor(private router: Router, 
-    private userInfoService: UserInfoService) {  
+    private userInfoService: UserInfoService,
+    private changeDetector: ChangeDetectorRef) {  
   }
 
   ngOnInit(): void {
     this.getUsersList();
   }
   public viewUser(userInfo:User) {
-     this.selectedUser ={...userInfo} ;
+    const newUser = {...userInfo};
+     this.selectedUser =newUser ;
+     this.changeDetector.detectChanges();
   }
 
  public goToAnimalStatistic() {
